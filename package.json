@@ -1,0 +1,34 @@
+{
+  "name": "nyt-mongo-scraping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testrun"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BoulderBrains/nyt-mongo-scraping.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "express-handlebars",
+    "cheerio",
+    "axios",
+    "scraping"
+  ],
+  "author": "Joshua D. Starkey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BoulderBrains/nyt-mongo-scraping/issues"
+  },
+  "homepage": "https://github.com/BoulderBrains/nyt-mongo-scraping#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.9"
+  }
+}
