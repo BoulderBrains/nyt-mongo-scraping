@@ -22,7 +22,6 @@ var PORT = 8000;
 // Initialize Express
 var app = express();
 
-// Configure middleware
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
@@ -43,22 +42,21 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/articleCollect
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
-// A GET route for scraping the nytimes website
 app.get("/scrape", function (req, res) {
 	
-	// First, we grab the body of the html with axios
+	// Grabbing the body of the html with axios
 	axios.get("https://www.nytimes.com/section/science").then(function (response) {
-		// Then, we load that into cheerio and save it to $ for a shorthand selector
+		// Then, load that into cheerio and save it to $ for a shorthand selector
 		const $ = cheerio.load(response.data);
 
 		let scrapedData = [];
 
-		// Now, we grab every h2 within an article tag, and do the following:
+		// Grab every an article in the ol li list, and do the following:
 		$("#stream-panel ol li").each(function (i, element) {
 			// Save an empty result object
 			var result = {};
 
-			// Add the title, summary and href of every article, and save them as properties of the result object
+			// Add the title, summary, image and href of every article, and save them as properties of the result object
 			result.title = $(this).find(".e1xfvim30").text();
 			result.summary = $(this).find(".e1xfvim31").text();
 			result.image = $(this).find(".css-79elbk").children("img").attr("src");
@@ -82,7 +80,6 @@ app.get("/scrape", function (req, res) {
 });
 
 app.get("/articles", function (req, res) {
-  
 	db.Article.find({})
 	.then(function (dbArticle) {		   
 		res.render('saved', {data: dbArticle})
@@ -95,9 +92,7 @@ app.get("/articles", function (req, res) {
   
 // Route for getting all Articles from the db
 app.post("/save", function (req, res) {
-	
-	console.log(req.body)
-  
+	// console.log(req.body)
 	db.Article.create(req.body)
 	.then(function (dbArticle) {
 		// If we were able to successfully find Articles, send them back to the client
@@ -110,7 +105,7 @@ app.post("/save", function (req, res) {
 });
   
 app.put("/delete", function (req, res) {
-	console.log(req.body.id)
+	// console.log(req.body.id)
 	db.Article.remove({_id:req.body.id})
 	.then(function (dbArticle) {
 		// If we were able to successfully find Articles, send them back to the client
@@ -145,8 +140,7 @@ app.put("/delete-note", function (req, res) {
 });
   
 app.post("/new-note", function (req, res) {
-	console.log({'title': req.body.title, 'body': req.body.body}, req.body.artId)
-	
+	// console.log({'title': req.body.title, 'body': req.body.body}, req.body.artId)
 	db.Note.create({'title': req.body.title, 'body': req.body.body})
 	.then(function (dbNote) {
 		// If we were able to successfully find Articles, send them back to the client
@@ -161,7 +155,7 @@ app.post("/new-note", function (req, res) {
 });
   
 app.get("/article-notes/:id", function(req, res) {
-	console.log(req.params.id)
+	// console.log(req.params.id)
 	db.Article.findOne({ _id: req.params.id })
 	.populate("note")
 	.then(function(dbArticle) {
