@@ -9,7 +9,7 @@
             </p>
         </div>
     </section>
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
         <div class="container">
 
             <div class="row savedRow">
@@ -23,26 +23,26 @@
 								<p class="card-title">{{title}}</p>
 								<small>{{desc}}</small>
 								<div class="mt-3 d-flex justify-content-between">
-									<div class="btn-group">
+									<div class="btn-group" style="margin: 0 auto;">
 
-										<a href="https://www.nytimes.com{{link}}" target="_blank"><button type="button" class="btn btn-success"
-												style="color:white">View</button></a>
+										<a href="https://www.nytimes.com{{link}}" target="_blank"><button type="button" class="btn btn-success view-button"
+												style="color:white; border-radius: .25rem 0 0 .25rem">View</button></a>
 
 										<button data-title="{{title}}" data-desc="{{desc}}" data-imglink="{{imgLink}}"
-											data-date="{{date}}" data-link="{{link}}" data-id="{{_id}}" type="button" class="delete btn btn-danger"
+											data-date="{{date}}" data-link="{{link}}" data-id="{{_id}}" type="button" class="delete btn btn-danger delete-button"
 											style="color:white">Delete</button>
 
 
 										<div class="dropdown">
-											<button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<button class="btn btn-info dropdown-toggle notes-button" type="button" id="dropdownMenuButton"
+												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 0 .25rem .25rem 0;">
 												Notes
 											</button>
 											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 												<a class="dropdown-item" data-toggle="modal" data-target="#modal-tag{{_id}}"
-													style="cursor:pointer">Create Note</a>
+													style="cursor:pointer">Add Note</a>
 
-												<a class="listing dropdown-item" data-toggle="modal" href="/article-notes/{{_id}}">See Notes</a>
+												<a class="listing dropdown-item" data-toggle="modal" href="/article-notes/{{_id}}">View Notes</a>
 											</div>
 										</div>
 
