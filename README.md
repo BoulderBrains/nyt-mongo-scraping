@@ -1,4 +1,4 @@
-#New York Times Science News Scraper
+# New York Times Science News Scraper
 ### https://nyt-mongo-scrape.herokuapp.com/
 
 ## Description
