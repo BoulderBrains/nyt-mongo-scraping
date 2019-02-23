@@ -1,6 +1,7 @@
-# All the News That's Fit to Scrape
+#New York Times Science News Scraper
+### https://nyt-mongo-scrape.herokuapp.com/
 
-### Overview
+## Description
 
 This is a node.js application that lets users view and leave comments on the latest news. It reached out to the NYTimes Science webpage (http://nytimes.com/section/science) and scrapes the latest article's headline, summary, image & URL and displays them in a bootstrap card. The articles are stored in a mongo database and are scraped using axios and cheerio. The routes are configured using express. Morgan is also configured for logging.
 
